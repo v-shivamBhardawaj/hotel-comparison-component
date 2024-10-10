@@ -1,25 +1,23 @@
-// window.addEventListener("load", (event) => {
-//     console.log("page is fully loaded" + objData);
-//   });
-
 const data = objData.data;
 const hotel_info = data.content.hotels;
 // Data in rates
 const price_info = data.rates.hotels;
-const obj = hotelProduct(hotel_info,price_info)
+const obj = new HotelDataProcessor(objData)
 
+//Comparison Criterions
 const min_rating = 4.0;
 const min_reviews = 150;
 const max_price = 3000;
 const min_price = 3000;
 
 // Step 1: Convert object to an array of entries
-const entries = Object.entries(obj);
+const resultData = Object.entries(obj.hotelProduct());
+
 // Step 2: Sort the entries based on price
 
 // let sortingPreference = prompt('Enter your sorting Preference.')
 validEntries = new Array;
-entries.forEach(hotel => {
+resultData.forEach(hotel => {
     if(hotel[1].reviews>=min_reviews){
         if(hotel[1].rating>=min_rating){
             validEntries.push(hotel)
@@ -41,8 +39,6 @@ for(let i=0;i<3;i++){
 console.log(arrayObj);
   
   
-// const dom = new JSDOM(`<!DOCTYPE html><html><body><div id="output"></div></body></html>`);
-// const document = dom.window.document;
 function commaSeparatedPrices(value) {
     return value.toLocaleString('en-IN');
 }
