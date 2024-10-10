@@ -8,8 +8,8 @@ const hotel_info = data.content.hotels;
 const price_info = data.rates.hotels;
 const obj = hotelProduct(hotel_info,price_info)
 
-const min_rating = 3.5;
-const min_reviews = 60;
+const min_rating = 4.0;
+const min_reviews = 150;
 const max_price = 3000;
 const min_price = 3000;
 
