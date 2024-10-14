@@ -1,30 +1,29 @@
-const data = objData.data;
-const hotel_info = data.content.hotels;
-// Data in rates
-const price_info = data.rates.hotels;
-const obj = new HotelDataProcessor(objData)
+class hotelList{
+    constructor(min_rating, min_reviews){
+        this.min_rating = min_rating;
+        this. min_reviews = min_reviews;
+    }
+
+    validEntries(){
+        const obj = new HotelDataProcessor(objData)
+        const resultData = Object.entries(obj.hotelProduct());
+        const list = new Array;
+        resultData.forEach(hotel => {
+            if(hotel[1].reviews>=this.min_reviews){
+                if(hotel[1].rating>=this.min_rating){
+                    list.push(hotel)
+                }
+            }
+        })
+        return list
+    }
+}
 
 //Comparison Criterions
-const min_rating = 4.0;
-const min_reviews = 150;
-const max_price = 3000;
-const min_price = 3000;
+const hotels = new hotelList(3.0, 1000)
+const validList = hotels.validEntries()
 
-// Step 1: Convert object to an array of entries
-const resultData = Object.entries(obj.hotelProduct());
-
-// Step 2: Sort the entries based on price
-
-// let sortingPreference = prompt('Enter your sorting Preference.')
-validEntries = new Array;
-resultData.forEach(hotel => {
-    if(hotel[1].reviews>=min_reviews){
-        if(hotel[1].rating>=min_rating){
-            validEntries.push(hotel)
-        }
-    }
-})
-sortedEntries = validEntries.sort((a, b) => a[1].price - b[1].price);
+sortedEntries = validList.sort((a, b) => a[1].price - b[1].price);
 // sort((a, b) => b[1].reviews - a[1].reviews);
 // &&((a, b) => b[1].rating - a[1].rating)&&((a, b) => a[1].price - b[1].price)
   

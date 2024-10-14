@@ -128,3 +128,14 @@
 //         }
 //     return combined_obj
 //     }
+
+
+
+
+
+
+// const data = objData.data;
+// const hotel_info = data.content.hotels;
+// // Data in rates
+// const price_info = data.rates.hotels;
+
